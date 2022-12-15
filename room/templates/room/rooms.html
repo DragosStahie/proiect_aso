@@ -18,6 +18,25 @@
             </div>
         </div>
     {% endfor %}
+
+    <div class="w-full lg:w-1/4 px-3 py-3">
+            <div class="p-4 bg-white shadow rounded-xl text-center">
+                <input class="text-xl font-semibold" type="text" id="input" name="input" placeholder="New Room Name..."><br><br>
+
+                <a href="/rooms/" class="px-5 py-3 block rounded-xl text-white bg-teal-600 hover:bg-teal-700" id="create-button">Create</a>
+            </div>
+        </div>
 </div>
 
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const inputHandler = function(e) {
+        document.querySelector('#create-button').href = '/rooms/new/' + document.querySelector('#input').value;
+        console.log("Input changed, new href: " + document.querySelector('#create-button').href);
+    }
+
+    document.querySelector('#input').addEventListener('input', inputHandler);
+</script>
 {% endblock %}
