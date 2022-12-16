@@ -95,7 +95,7 @@ DATABASES = {
         'NAME': 'asodb',
         'USER': 'root',
         'PASSWORD': 'root',
-        'HOST':'localhost',
+        'HOST':'aso-db',
         'PORT':'3306',
     }
 }

@@ -1,0 +1,23 @@
+version: "3"
+services:
+  aso-db:
+    image: mysql
+    networks:
+      - aso-network
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=asodb
+
+  aso-backend:
+    image: asodjangobackend
+    ports:
+      - "8000:8000"
+    networks:
+      - aso-network
+    depends_on:
+      - aso-db
+    restart: on-failure
+    command: sh -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+
+networks:
+  aso-network:
